@@ -1,0 +1,104 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Spartan', sans-serif;
+    background-color: hsl(0, 0%, 90%);
+}
+
+div {
+    margin: 10px;
+}
+
+#calculator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#calc {
+    margin: 10px;
+}
+
+#number-display {
+    text-align: right;
+    background-color: hsl(0, 0%, 93%);
+    border-radius: 10px;
+    width: 450px;
+    height: 100px;
+    padding: 30px;
+}
+
+#keypad {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    row-gap: 20px;
+    column-gap: 20px;
+    width: 450px;
+    height: 400px;
+    border-radius: 10px;
+    padding: 30px;
+    background-color: hsl(0, 5%, 81%);
+}
+
+
+.btn {
+    font-family: 'Spartan', sans-serif;
+    font-size: 25px;
+    border: none;
+    background-color: hsl(45, 7%, 89%);
+    box-shadow: 0 4px hsl(35, 11%, 61%);
+    width: 80px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+.btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px hsl(35, 11%, 61%);
+}
+
+.long-btn {
+    grid-column: span 2;
+    font-family: 'Spartan', sans-serif;
+    font-size: 20px;
+    border: none;
+    background-color: hsl(185, 7%, 89%);
+    box-shadow: 0 4px #999;
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+#delete {
+    background-color: hsl(185, 42%, 37%);
+    box-shadow: 0 4px hsl(185, 58%, 25%);
+    color: white;
+    font-size: 15px;
+}
+
+#delete:active {
+    box-shadow: 0 2px hsl(185, 58%, 25%);
+}
+
+#reset {
+    background-color: hsl(185, 42%, 37%);
+    box-shadow: 0 4px hsl(185, 58%, 25%);
+    color: white;
+    font-size: 15px;
+}
+
+#reset:active {
+    box-shadow: 0 2px hsl(185, 58%, 25%);
+}
+
+#equals {
+    background-color: hsl(25, 98%, 40%);
+    box-shadow: 0 4px hsl(25, 99%, 27%);
+    color: white;
+}
+
+#equals:active {
+    box-shadow: 0 2px hsl(25, 99%, 27%);
+}
