@@ -17,18 +17,68 @@ function divide(firstNum, nextNum) {
 function operate(firstNum, operator, nextNum,) {
     let solution;
     switch (operator) {
-        case 'plus':
+        case '+':
             solution = add(firstNum, nextNum);
             break;
-        case 'minus':
+        case '-':
             solution = subtract(firstNum, nextNum);
             break;
-        case 'times':
+        case 'x':
             solution = multiply(firstNum, nextNum);
             break;
-        case 'divided':
+        case '/':
             solution = divide(firstNum, nextNum);
             break;
     }
     return solution;
 }
+
+const dataNumber = document.querySelectorAll("#data-number");
+const dataOperator = document.querySelectorAll("#data-operator");
+const display = document.querySelector("#solution");
+const equals = document.querySelector("#equals");
+const deleteNum = document.querySelector("#delete");
+
+let firstNum = "";
+let nextNum = "";
+let operator = "";
+let operatorPressed = false;
+
+dataNumber.forEach(dataNumber => dataNumber.addEventListener("click", function() {
+    console.log(operator);
+    if(operatorPressed == false) {
+        display.textContent += dataNumber.textContent;
+    }
+    else if(operatorPressed == true) {
+        display.textContent += dataNumber.textContent;
+    }
+}));
+
+dataOperator.forEach(dataOperator => dataOperator.addEventListener("click", function() {
+    operator = dataOperator.textContent;
+    if(operatorPressed == false) {
+        firstNum = display.textContent;
+        firstNum = parseInt(firstNum);
+        console.log(firstNum);
+        display.textContent = "";
+        operatorPressed = true;
+    }
+    else if(operatorPressed == true) {
+        firstNum = display.textContent;
+        firstNum = parseInt(firstNum);
+        display.textContent = "";
+    }
+}))
+
+equals.addEventListener("click", function() {
+    nextNum = display.textContent;
+    nextNum = parseInt(nextNum);
+    console.log(nextNum);
+    display.textContent = operate(firstNum, operator, nextNum);
+});
+
+deleteNum.addEventListener("click", function() {
+    display.textContent = display.textContent.toString().slice(0, -1);
+})
+
+
