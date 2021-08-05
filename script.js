@@ -5,10 +5,13 @@ const equals = document.querySelector("#equals");
 const deleteNum = document.querySelector("#delete");
 const reset = document.querySelector("#reset")
 
-let firstNum = "";
-let nextNum = "";
+let firstNum = "0";
+let nextNum = "0";
 let operator = "";
 let operatorPressed = false;
+let resetScreen = false;
+
+display.textContent = "0";
 
 function add(firstNum, nextNum) {
     return firstNum + nextNum;
@@ -45,6 +48,11 @@ function operate(firstNum, operator, nextNum,) {
     return solution;
 }
 
+function resetDisplay() {
+    display.textContent = '';
+    resetScreen = false;
+}
+
 function evaluate() {
     nextNum = display.textContent;
     nextNum = parseInt(nextNum);
@@ -68,12 +76,15 @@ function clear() {
         nextNum = "";
         operator = "";
         operatorPressed = false;
-        display.textContent = '';
+        display.textContent = '0';
     }
 }
 
 dataNumber.forEach(dataNumber => dataNumber.addEventListener("click", function() {
     console.log(operator);
+    if(display.textContent === '0' || resetScreen){
+        resetDisplay();
+    }
     display.textContent += dataNumber.textContent;
 }));
 
@@ -83,13 +94,13 @@ dataOperator.forEach(dataOperator => dataOperator.addEventListener("click", func
         firstNum = display.textContent;
         firstNum = parseInt(firstNum);
         console.log('first num:' + firstNum);
-        display.textContent = "";
+        resetScreen = true;
         operatorPressed = true;
     }
     else if(operatorPressed == true) {  //if operator is pressed, then assign the second number
         firstNum = display.textContent;
         firstNum = parseInt(firstNum);
-        display.textContent = "";
+        resetScreen = true;
     }
 }))
 
