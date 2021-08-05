@@ -67,7 +67,15 @@ function evaluate() {
 }
 
 function backspace() {
-    display.textContent = display.textContent.toString().slice(0, -1);
+    if(display.textContent === '0') {
+        return;
+    }
+    else if(display.textContent.length === 1) {
+        display.textContent = '0';
+    }
+    else {
+        display.textContent = display.textContent.toString().slice(0, -1);
+    }
 }
 
 function clear() {
