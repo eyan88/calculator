@@ -59,7 +59,7 @@ dataOperator.forEach(dataOperator => dataOperator.addEventListener("click", func
     if(operatorPressed == false) {
         firstNum = display.textContent;
         firstNum = parseInt(firstNum);
-        console.log(firstNum);
+        console.log('first num:' + firstNum);
         display.textContent = "";
         operatorPressed = true;
     }
@@ -70,15 +70,22 @@ dataOperator.forEach(dataOperator => dataOperator.addEventListener("click", func
     }
 }))
 
-equals.addEventListener("click", function() {
+equals.addEventListener("click", evaluate);
+deleteNum.addEventListener("click", backspace);
+
+function evaluate() {
     nextNum = display.textContent;
     nextNum = parseInt(nextNum);
-    console.log(nextNum);
+
+    if(nextNum == 0) {
+        alert('Error: Divide by Zero');
+        return;
+    }
+    console.log('next num:' + nextNum);
     display.textContent = operate(firstNum, operator, nextNum);
-});
+}
 
-deleteNum.addEventListener("click", function() {
+function backspace() {
     display.textContent = display.textContent.toString().slice(0, -1);
-})
-
+}
 
